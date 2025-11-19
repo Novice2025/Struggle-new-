@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>STRUGGLE Foundry - The Resilience Engine (Lidar com a Adversidade)</title>
+    <!-- Load Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Custom Font */
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f9fafb;
+        }
+        /* Custom styles for line clamping on the cards */
+        .line-clamp-3 {
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col">
+
+    <!-- Header - Darker, more grounded palette for "Struggle/Resilience" -->
+    <header id="app-header" class="bg-gray-800 shadow-xl p-4 sticky top-0 z-10">
+        <div class="container mx-auto flex justify-between items-center">
+            <h1 id="home-link-header" class="text-2xl font-extrabold text-white tracking-widest cursor-pointer hover:text-yellow-400 transition duration-300">
+                STRUGGLE Foundry <span class="text-yellow-400">🛡️</span>
+            </h1>
+            <nav class="space-x-4">
+                <button id="home-link-nav" class="text-white font-medium hover:text-yellow-400 transition duration-300 focus:outline-none">
+                    Home / Modules
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Content Area -->
+    <main id="app-content" class="container mx-auto flex-grow p-4 sm:p-6 lg:p-8">
+        <!-- Content will be injected here by JavaScript -->
+        <div class="text-center p-12 text-gray-500">Loading application...</div>
+    </main>
+
+    <!-- Footer - Reflects the new theme -->
+    <footer class="bg-gray-700 p-4 mt-12">
+        <div class="container mx-auto text-center text-white text-sm">
+            (2025 @ STRUGGLE Foundry by Daby) - Resilience Built Here.
+        </div>
+    </footer>
+
+    <script>
+        // --- 1. DATA STRUCTURES (Focused on STRUGGLE, Adversity, and Resilience) ---
+
+        const lessons = [
+            {
+                id: 1,
+                role: 'Tech Developer',
+                level: 'Júnior',
+                title: 'The Onboarding Struggle: Navigating Complexity and Failure',
+                description: 'This module is dedicated to managing the initial **struggle** (**luta**) of complexity: dealing with overwhelming new codebases, learning from mistakes, and preventing early burnout through structured resilience.',
+                kpis: [
+                    { name: 'Struggle Metric: Recovery Rate (Bug-Fix)', description: 'Tracks the speed and efficiency of returning to a functional state after a critical failure or bug, demonstrating resilience.' },
+                    { name: 'Struggle Metric: Asking Quality Ratio', description: 'Measures the effort put into self-research before seeking help, ensuring the **struggle** is productive rather than dependent.' },
+                    { name: 'Struggle Metric: Documentation Engagement', description: 'Tracks the commitment to documenting new, difficult processes, turning personal **struggle** into shared knowledge.' },
+                ],
+                scenario: {
+                    title: 'The Overwhelmed Beginner: Alex’s Battle with the Legacy Code',
+                    steps: [
+                        { id: 1, title: 'Initial Overwhelm', content: 'Alex is assigned a massive legacy project, causing anxiety and a feeling of incompetence—the classic **struggle** (**luta**) of the junior developer.', imageAlt: 'Developer looking overwhelmed by complex code' },
+                        { id: 2, title: 'Measuring Recovery', content: 'He starts using the **Recovery Rate** metric, focusing not on avoiding bugs, but on fixing them faster and documenting the fix, embracing the **struggle** as a learning tool.', imageAlt: 'Stopwatch measuring fix time' },
+                        { id: 3, title: 'Productive Asking', content: 'By improving his **Asking Quality Ratio**, Alex turns his need for help into a display of research and critical thinking, respecting others\' time while still in the **struggle**.', imageAlt: 'Question mark and research notes' },
+                        { id: 4, title: 'Mastering the Legacy', content: 'Alex becomes the team expert on the challenging system, proving that persistence through the initial **struggle** (**adversidade**) is the fastest path to mastery.', imageAlt: 'Graph showing steep skill growth' },
+                    ],
+                },
+                exercise: [
+                    {
+                        id: 1,
+                        text: "For a new developer, which action best demonstrates resilience in the face of a severe coding **struggle** (**luta**)?",
+                        options: ["Immediately asking a senior developer to fix the issue (Dependency)", "Giving up and postponing the task (Avoidance)", "Analyzing the root cause, documenting the steps taken, and then seeking targeted help (Resilience)", "Working 24 hours straight until it's resolved (Burnout)"],
+                        correctAnswerIndex: 2,
+                        explanation: "Resilience is not about avoiding the **struggle**, but engaging with it constructively. Analyzing and documenting the effort ensures that the struggle leads to learning, even if the final solution requires external help.",
+                    },
+                ],
+            },
+            {
+                id: 2,
+                role: 'Remote Professional',
+                level: 'Sênior',
+                title: 'The Burnout Struggle: Sustaining Performance in Isolation',
+                description: 'Master the strategies to navigate the **struggle** (**adversidade**) of high pressure and remote isolation, focusing on setting boundaries, managing energy, and preventing the degradation of long-term productivity.',
+                kpis: [
+                    { name: 'Struggle Metric: Energy Reserve Index', description: 'Measures time dedicated to activities explicitly non-work related (e.g., deep leisure, exercise) that replenish resources needed to endure long **struggles**.' },
+                    { name: 'Struggle Metric: Boundary Compliance Score', description: 'Tracks the successful adherence to pre-set work start/stop times, essential for protecting recovery during the **struggle**.' },
+                ],
+                scenario: {
+                    title: 'The Never-Ending Day: Sarah\'s Boundary War',
+                    steps: [
+                        { id: 1, title: 'The Boundary Collapse', content: 'Sarah\'s remote work bled into her evenings and weekends, leading to chronic fatigue—a common **struggle** (**luta**) of high-achieving professionals.', imageAlt: 'Work calendar blending into weekend' },
+                        { id: 2, title: 'Refueling the Tank', content: 'She implements the **Energy Reserve Index**, scheduling mandatory blocks for exercise and family time, recognizing that these activities fuel her capacity to sustain the **struggle**.', imageAlt: 'Person exercising outdoors' },
+                        { id: 3, title: 'Enforcing Boundaries', content: 'By actively improving her **Boundary Compliance Score**, Sarah makes peace with leaving tasks incomplete until the next morning, managing expectations and reducing self-imposed **struggle**.', imageAlt: 'Red stop sign icon' },
+                        { id: 4, title: 'Sustainable Mastery', content: 'Sarah achieves higher quality output over the long term, demonstrating that the ultimate resilience is found in managing the **struggle** by prioritizing recovery.', imageAlt: 'Battery symbol at 100%' },
+                    ],
+                },
+                exercise: [
+                    {
+                        id: 1,
+                        text: "What is the most effective proactive defense against the **struggle** of professional burnout?",
+                        options: ["Taking a single, long vacation once a year (Delay)", "Relying on caffeine to push through fatigue (Suppression)", "Consistent, daily protection of non-work time and recovery activities (Prevention)", "Doing extra work on weekends to get ahead (Acceleration)"],
+                        correctAnswerIndex: 2,
+                        explanation: "The **struggle** of burnout is managed best by prevention. Consistent protection of recovery time, measured by the **Boundary Compliance Score**, builds the necessary stamina for long-term challenge management.",
+                    },
+                ],
+            },
+            {
+                id: 3,
+                role: 'Team Lead',
+                level: 'Gerente',
+                title: 'The Conflict Struggle: Harnessing Team Friction for Growth',
+                description: 'Learn to transform inevitable team **struggles** (**conflitos**) and interpersonal friction into drivers of better outcomes by focusing on process clarity, conflict resolution speed, and psychological safety.',
+                kpis: [
+                    { name: 'Struggle Metric: Conflict Resolution Velocity', description: 'Measures the time taken from the identification of a significant conflict to its documented resolution, minimizing damaging, prolonged **struggle**.' },
+                    { name: 'Struggle Metric: Idea Dissent Frequency', description: 'Tracks the percentage of meetings where significant opposing viewpoints are constructively shared, indicating a healthy environment for intellectual **struggle**.' },
+                ],
+                scenario: {
+                    title: 'The Silo War: Maria\'s Path to Productive Disagreement',
+                    steps: [
+                        { id: 1, title: 'Passive Aggression', content: 'Maria notices team members avoiding direct debate, leading to subpar decisions and underlying resentment—a corrosive form of **struggle** (**conflito**).', imageAlt: 'People communicating indirectly' },
+                        { id: 2, title: 'Speeding Resolution', content: 'She institutes the **Conflict Resolution Velocity** metric, creating a clear, fast process for dealing with friction, turning the team **struggle** into a temporary event.', imageAlt: 'Handshake over a crossed-out argument' },
+                        { id: 3, title: 'Encouraging Dissent', content: 'Maria actively fosters the **Idea Dissent Frequency**, rewarding members who constructively challenge the status quo, embracing intellectual **struggle** as necessary for innovation.', imageAlt: 'Two gears meshing together' },
+                        { id: 4, title: 'A Resilient Unit', content: 'The team learns that challenging one another is an act of trust, transforming interpersonal **struggle** into a mechanism for collective high performance and resilience.', imageAlt: 'Team standing confidently together' },
+                    ],
+                },
+                exercise: [
+                    {
+                        id: 1,
+                        text: "In managing team **struggle** (**conflito**), what is the primary benefit of a high 'Idea Dissent Frequency'?",
+                        options: ["It makes meetings longer and more thorough (Duration)", "It guarantees that the manager is always right (Authority)", "It ensures that different perspectives are rigorously tested before a decision is made (Quality)", "It minimizes the need for follow-up communication (Efficiency)"],
+                        correctAnswerIndex: 3,
+                        explanation: "A healthy intellectual **struggle** over ideas is critical. High **Idea Dissent Frequency** ensures decisions are robust because they have survived the challenge of differing viewpoints, maximizing quality and collective buy-in.",
+                    },
+                ],
+            },
+            {
+                id: 4,
+                role: 'Startup Founder',
+                level: 'Executivo',
+                title: 'The Existential Struggle: Navigating Market Uncertainty',
+                description: 'This module addresses the strategic **struggle** (**luta**) of organizational survival: confronting prolonged market failure, making hard pivots, and maintaining the team\'s morale through existential uncertainty.',
+                kpis: [
+                    { name: 'Struggle Metric: Market Feedback Adaptation Rate', description: 'Measures the speed at which major product changes are implemented after receiving strongly negative market signals, showing resilience to change.' },
+                    { name: 'Struggle Metric: Transparency Index (Morale)', description: 'Tracks the frequency and honesty of communication with the team regarding major strategic **struggles** and financial reality, essential for trust during adversity.' },
+                ],
+                scenario: {
+                    title: 'CEO Daniel’s Darkest Hour: The Failed Product Launch',
+                    steps: [
+                        { id: 1, title: 'The Critical Blow', content: 'Daniel’s flagship product launch failed dramatically, plunging the company into a cash crisis and forcing him to confront the ultimate **struggle** (**adversidade**) of potential closure.', imageAlt: 'Broken rocket ship icon' },
+                        { id: 2, title: 'Rapid Adaptation', content: 'He focuses the team on the **Market Feedback Adaptation Rate**, forcing a swift and brutal pivot based on honest customer data, turning the failure into a new, urgent **struggle**.', imageAlt: 'Arrow changing direction sharply' },
+                        { id: 3, title: 'Leading with Honesty', content: 'By increasing the **Transparency Index**, Daniel shares the full reality of the company\'s **struggle** with his team, building powerful loyalty and grit instead of fear.', imageAlt: 'Open lock and key' },
+                        { id: 4, title: 'Forging Resilience', content: 'The company survives and thrives in its new direction, validating that organizational resilience is built not by avoiding the **struggle**, but by leading honestly through it.', imageAlt: 'Phoenix rising from the ashes' },
+                    ],
+                },
+                exercise: [
+                    {
+                        id: 1,
+                        text: "When facing an existential **struggle** (**luta**) like a failed product, what leadership action offers the highest return on team morale and resilience?",
+                        options: ["Firing the product team and hiring a new one (Blame)", "Hiding the financial situation to prevent panic (Deception)", "Communicating the full, honest truth about the challenge and the plan to fight it (Trust)", "Spending the last money on a huge marketing campaign (Denial)"],
+                        correctAnswerIndex: 3,
+                        explanation: "During extreme **struggle**, **Transparency** (Trust) is the greatest asset. By being honest about the challenge, the founder builds team resilience, turning individuals into partners in the fight against adversity.",
+                    },
+                ],
+            },
+        ];
+
+        // --- 2. GLOBAL STATE AND NAVIGATION ---
+        const AppState = {
+            currentPageId: null, // null for Home, ID for Lesson Detail
+            scenarioSteps: {} // Stores the current step for each lesson ID
+        };
+
+        const appContent = document.getElementById('app-content');
+
+        /**
+         * Renders the entire application based on the current state.
+         * @param {number|null} id - The ID of the lesson to navigate to, or null for home.
+         */
+        const navigateTo = (id) => {
+            AppState.currentPageId = id;
+            window.scrollTo(0, 0);
+
+            if (id === null) {
+                renderHome();
+            } else {
+                const lesson = lessons.find(l => l.id === id);
+                if (lesson) {
+                    renderLessonDetail(lesson);
+                } else {
+                    appContent.innerHTML = `<div class="text-center p-12 text-red-500 text-xl">Module not found.</div>`;
+                }
+            }
+        };
+
+        // --- 3. RENDERING FUNCTIONS ---
+
+        /**
+         * Renders the Home View (list of lessons).
+         */
+        const renderHome = () => {
+            const lessonCards = lessons.map(lesson => {
+                let levelClasses = '';
+                if (lesson.level === 'Executivo') {
+                    levelClasses = 'bg-red-100 text-red-800 border-red-500';
+                } else if (lesson.level === 'Gerente') {
+                    levelClasses = 'bg-indigo-100 text-indigo-800 border-indigo-500';
+                } else if (lesson.level === 'Sênior') {
+                    levelClasses = 'bg-yellow-100 text-yellow-800 border-yellow-500';
+                } else {
+                    levelClasses = 'bg-gray-100 text-gray-800 border-gray-500';
+                }
+
+                return `
+                    <div data-id="${lesson.id}" class="bg-white p-6 rounded-xl shadow-lg hover:shadow-xl transition duration-300 transform hover:-translate-y-1 border-t-4 ${levelClasses} cursor-pointer lesson-card">
+                        <div class="flex justify-between items-start mb-2">
+                            <h3 class="text-xl font-bold text-gray-900">${lesson.role}</h3>
+                            <span class="px-3 py-1 text-xs font-semibold rounded-full shadow-sm ${levelClasses.replace('border-', 'bg-').replace('100', '200')}" style="color: ${levelClasses.match(/text-([a-z]+-\d+)/)[0]}">
+                                ${lesson.level}
+                            </span>
+                        </div>
+                        <h4 class="text-lg font-medium text-gray-700 mb-3">${lesson.title}</h4>
+                        <p class="text-sm text-gray-600 mb-4 line-clamp-3">${lesson.description}</p>
+                        <div class="text-xs font-semibold text-gray-700 flex items-center">
+                            Start Module to Master the STRUGGLE (Luta) &rarr;
+                        </div>
+                    </div>
+                `;
+            }).join('');
+
+            appContent.innerHTML = `
+                <div class="space-y-8">
+                    <header class="text-center py-8 bg-gray-100 rounded-xl shadow-md border-b-4 border-gray-300">
+                        <h2 class="text-4xl font-black text-gray-800 mb-2">
+                            STRUGGLE Foundry: The Resilience Engine 🛡️
+                        </h2>
+                        <p class="text-xl text-gray-600">
+                            Select a professional challenge to learn how to **master adversity** and build unwavering grit.
+                        </p>
+                    </header>
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                        ${lessonCards}
+                    </div>
+                </div>
+            `;
+
+            // Attach event listeners to the new cards
+            document.querySelectorAll('.lesson-card').forEach(card => {
+                card.addEventListener('click', (e) => {
+                    const id = parseInt(card.getAttribute('data-id'));
+                    navigateTo(id);
+                });
+            });
+        };
+
+        /**
+         * Renders the Lesson Detail View.
+         * @param {object} lesson
+         */
+        const renderLessonDetail = (lesson) => {
+            const kpiList = lesson.kpis.map((kpi, index) => `
+                <div key="${index}" class="p-4 border border-gray-100 rounded-lg bg-white shadow-sm">
+                    <p class="font-semibold text-lg text-gray-900 flex items-center">
+                        <span class="text-yellow-500 mr-2 text-2xl">💪</span> ${kpi.name}
+                    </p>
+                    <p class="text-sm text-gray-600 mt-1">${kpi.description}</p>
+                </div>
+            `).join('');
+
+            appContent.innerHTML = `
+                <div class="space-y-10">
+                    <button id="back-to-list-btn" class="text-gray-600 hover:text-gray-800 transition duration-200 flex items-center mb-6">
+                        <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path></svg>
+                        Back to Challenges
+                    </button>
+                    
+                    <header class="text-center py-6 bg-gray-700 text-white rounded-xl shadow-xl">
+                        <p class="text-sm font-light uppercase opacity-80">${lesson.role} | Level ${lesson.level}</p>
+                        <h2 class="text-3xl font-black mt-1 mb-2">${lesson.title}</h2>
+                        <p class="text-lg font-medium opacity-90 mx-auto max-w-3xl">
+                            ${lesson.description}
+                        </p>
+                    </header>
+
+                    <!-- Section 1: Core Metrics (Struggle KPIs) -->
+                    <div class="bg-white p-6 rounded-xl shadow-xl border-t-4 border-gray-500">
+                        <h3 class="text-2xl font-bold text-gray-700 mb-4">Core Metrics for Resilience (Luta)</h3>
+                        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                            ${kpiList}
+                        </div>
+                    </div>
+
+                    <!-- Section 2: Scenario Walkthrough (The STRUGGLE Walk-through) -->
+                    <div id="scenario-container"></div>
+
+                    <!-- Section 3: Interactive Exercise -->
+                    <div id="exercise-container"></div>
+                </div>
+            `;
+
+            document.getElementById('back-to-list-btn').addEventListener('click', () => navigateTo(null));
+
+            renderScenarioStepper(lesson);
+            renderExercise(lesson);
+        };
+
+        /**
+         * Renders the Scenario Stepper component.
+         * @param {object} lesson
+         */
+        const renderScenarioStepper = (lesson) => {
+            const container = document.getElementById('scenario-container');
+            const lessonId = lesson.id;
+            
+            // Initialize current step for the lesson if not exists
+            if (AppState.scenarioSteps[lessonId] === undefined) {
+                AppState.scenarioSteps[lessonId] = 0;
+            }
+            let currentStep = AppState.scenarioSteps[lessonId];
+            const totalSteps = lesson.scenario.steps.length;
+            const currentStepData = lesson.scenario.steps[currentStep];
+            const progress = ((currentStep + 1) / totalSteps) * 100;
+
+            container.innerHTML = `
+                <div class="bg-white p-6 rounded-xl shadow-xl border border-gray-200">
+                    <h3 class="text-2xl font-bold mb-4 text-gray-700">STRUGGLE Walk-through: ${lesson.scenario.title}</h3>
+                    <p class="text-sm text-gray-500 italic mb-4">A step-by-step guide to transforming **struggle** (**adversidade**) into genuine growth.</p>
+                    
+                    <!-- Progress Bar -->
+                    <div class="mb-6">
+                        <div class="h-2 bg-gray-200 rounded-full">
+                            <div 
+                                class="h-2 bg-yellow-500 rounded-full transition-all duration-500"
+                                style="width: ${progress}%"
+                            ></div>
+                        </div>
+                        <p class="text-right text-sm text-gray-600 mt-1">Step ${currentStep + 1} of ${totalSteps}</p>
+                    </div>
+                    
+                    <!-- Step Content -->
+                    <div class="p-4 bg-gray-50 border-l-4 border-gray-500 rounded-lg mb-6">
+                        <h4 class="text-xl font-bold mb-3 text-gray-700">${currentStepData.title}</h4>
+                        <p class="text-gray-700 whitespace-pre-line leading-relaxed">${currentStepData.content}</p>
+                    </div>
+                    
+                    <!-- Navigation Buttons -->
+                    <div class="flex justify-between">
+                        <button id="prev-step-btn" 
+                            class="px-4 py-2 rounded-full font-medium transition duration-300 shadow-md text-sm
+                            ${currentStep === 0 ? 'bg-gray-300 text-gray-500 cursor-not-allowed' : 'bg-red-600 text-white hover:bg-red-700'}"
+                            ${currentStep === 0 ? 'disabled' : ''}>
+                            &larr; Previous Step
+                        </button>
+                        <button id="next-step-btn" 
+                            class="px-4 py-2 rounded-full font-medium transition duration-300 shadow-md text-sm
+                            ${currentStep === totalSteps - 1 ? 'bg-gray-300 text-gray-500 cursor-not-allowed' : 'bg-indigo-600 text-white hover:bg-indigo-700'}"
+                            ${currentStep === totalSteps - 1 ? 'disabled' : ''}>
+                            ${currentStep === totalSteps - 1 ? 'Walk-through Complete! Resilience Forged!' : 'Next Step \u2192'}
+                        </button>
+                    </div>
+                </div>
+            `;
+
+            // Attach event listeners
+            document.getElementById('prev-step-btn').addEventListener('click', () => {
+                AppState.scenarioSteps[lessonId] = Math.max(currentStep - 1, 0);
+                renderScenarioStepper(lesson);
+            });
+            document.getElementById('next-step-btn').addEventListener('click', () => {
+                AppState.scenarioSteps[lessonId] = Math.min(currentStep + 1, totalSteps - 1);
+                renderScenarioStepper(lesson);
+            });
+        };
+
+
+        /**
+         * Renders the Interactive Exercise component.
+         * @param {object} lesson
+         */
+        const renderExercise = (lesson) => {
+            const container = document.getElementById('exercise-container');
+            const lessonId = lesson.id;
+            const questions = lesson.exercise;
+
+            // Initialize exercise state for the lesson if not exists
+            if (!AppState.exerciseState) AppState.exerciseState = {};
+            if (!AppState.exerciseState[lessonId]) {
+                AppState.exerciseState[lessonId] = {
+                    selectedAnswers: Array(questions.length).fill(null),
+                    submitted: false
+                };
+            }
+
+            let state = AppState.exerciseState[lessonId];
+            const score = questions.filter((q, i) => state.selectedAnswers[i] === q.correctAnswerIndex).length;
+            const isComplete = state.selectedAnswers.every(a => a !== null);
+            
+            const handleSelect = (qIndex, aIndex) => {
+                if (state.submitted) return;
+                state.selectedAnswers[qIndex] = aIndex;
+                renderExercise(lesson); // Re-render to show selection
+            };
+
+            const handleSubmit = () => {
+                state.submitted = true;
+                renderExercise(lesson); // Re-render to show results
+                document.getElementById('exercise-results')?.scrollIntoView({ behavior: 'smooth' });
+            };
+
+            const handleReset = () => {
+                state.submitted = false;
+                state.selectedAnswers = Array(questions.length).fill(null);
+                renderExercise(lesson); // Re-render to reset quiz
+            };
+
+            const scoreDisplay = state.submitted ? `
+                <div id="exercise-results" class="p-4 mb-6 bg-blue-100 border-l-4 border-blue-500 text-blue-700 font-bold text-lg rounded-md">
+                    Your Result: ${score} out of ${questions.length} (${((score / questions.length) * 100).toFixed(0)}%) - Keep embracing the **struggle**!
+                </div>
+            ` : '';
+
+            const questionMarkup = questions.map((q, qIndex) => {
+                const optionsMarkup = q.options.map((option, aIndex) => {
+                    let optionClasses = '';
+                    let prefix = '';
+                    const isSelected = state.selectedAnswers[qIndex] === aIndex;
+                    const isCorrect = q.correctAnswerIndex === aIndex;
+                    
+                    if (!state.submitted) {
+                        // Not submitted: show hover/selected state
+                        optionClasses = isSelected ? 'bg-gray-200 border-gray-500 cursor-pointer' : 'hover:bg-gray-50 cursor-pointer';
+                    } else {
+                        // Submitted: show result state
+                        if (isCorrect) {
+                            optionClasses = 'bg-green-100 border-green-500 font-bold';
+                            prefix = '✅ ';
+                        } else if (isSelected) {
+                            optionClasses = 'bg-red-100 border-red-500 font-bold opacity-70';
+                            prefix = '❌ ';
+                        } else {
+                            optionClasses = 'bg-gray-100 opacity-50';
+                        }
+                    }
+
+                    return `
+                        <div 
+                            class="p-3 border rounded-lg transition duration-200 text-sm option-select ${optionClasses}"
+                            data-qindex="${qIndex}" 
+                            data-aindex="${aIndex}"
+                            ${state.submitted ? 'style="pointer-events: none;"' : ''}
+                        >
+                            ${prefix}${option}
+                        </div>
+                    `;
+                }).join('');
+
+                const explanationMarkup = state.submitted ? `
+                    <div class="mt-3 text-sm p-3 bg-gray-50 border-l-2 border-gray-300 rounded-br-lg rounded-bl-lg">
+                        <p class="font-bold text-green-700">Resilience Insight (Lição da Adversidade):</p>
+                        <p class="text-gray-600">${q.explanation}</p>
+                    </div>
+                ` : '';
+
+                return `
+                    <div class="mb-8 p-4 border border-gray-200 rounded-lg bg-white shadow-sm">
+                        <p class="font-semibold mb-3 text-lg text-gray-800">
+                            ${qIndex + 1}. ${q.text}
+                        </p>
+                        <div class="space-y-2">
+                            ${optionsMarkup}
+                        </div>
+                        ${explanationMarkup}
+                    </div>
+                `;
+            }).join('');
+            
+            const buttonMarkup = !state.submitted ? `
+                <button
+                    id="submit-quiz-btn"
+                    class="w-full bg-gray-700 text-white font-bold py-3 rounded-lg hover:bg-gray-800 transition duration-300 ${!isComplete ? 'disabled:bg-gray-400 disabled:cursor-not-allowed' : 'shadow-md'}"
+                    ${!isComplete ? 'disabled' : ''}
+                >
+                    Test Your Understanding of Struggle (Luta)
+                </button>
+            ` : `
+                <button
+                    id="reset-quiz-btn"
+                    class="w-full bg-blue-600 text-white font-bold py-3 rounded-lg hover:bg-blue-700 transition duration-300 shadow-md"
+                >
+                    Reset Quiz and Re-Challenge Yourself (Re-Lutar)
+                </button>
+            `;
+
+
+            container.innerHTML = `
+                <div class="mt-8 p-6 bg-yellow-50 rounded-xl shadow-lg border-t-4 border-yellow-500">
+                    <h3 class="text-3xl font-extrabold text-indigo-700 mb-6 border-b pb-2">
+                        Measure Your Resilience to Struggle 🛡️
+                    </h3>
+                    ${scoreDisplay}
+                    ${questionMarkup}
+                    ${buttonMarkup}
+                </div>
+            `;
+
+            // Attach event listeners for selection
+            document.querySelectorAll('.option-select').forEach(optionDiv => {
+                optionDiv.addEventListener('click', (e) => {
+                    const qIndex = parseInt(optionDiv.getAttribute('data-qindex'));
+                    const aIndex = parseInt(optionDiv.getAttribute('data-aindex'));
+                    handleSelect(qIndex, aIndex);
+                });
+            });
+
+            // Attach event listeners for submit/reset
+            if (document.getElementById('submit-quiz-btn')) {
+                document.getElementById('submit-quiz-btn').addEventListener('click', handleSubmit);
+            }
+            if (document.getElementById('reset-quiz-btn')) {
+                document.getElementById('reset-quiz-btn').addEventListener('click', handleReset);
+            }
+        };
+
+
+        // --- 4. INITIALIZATION ---
+
+        window.onload = () => {
+            // Set up universal navigation listeners
+            document.getElementById('home-link-header').addEventListener('click', () => navigateTo(null));
+            document.getElementById('home-link-nav').addEventListener('click', () => navigateTo(null));
+            
+            // Start the application on the home view
+            navigateTo(null);
+        };
+    </script>
+</body>
+</html>
